@@ -31,8 +31,9 @@ venv/
 **/*.zip
 **/*.tar
 **/*.tar.gz
+# the final thesis PDF ships with the repo (everything else .pdf stays ignored)
 **/*.pdf
-!/MAVIS.pdf   # the final thesis PDF ships with the repo
+!/MAVIS.pdf
 
 # Model weights
 models_weights/
