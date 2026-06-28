@@ -1,0 +1,76 @@
+# ═══════════════════════════════════════════════
+# rsync exclude patterns — mavis-TFG cluster sync
+# ═══════════════════════════════════════════════
+# Used by cluster-push.ps1 to avoid uploading large files/dirs.
+
+# ── Datos pesados (no sincronizar hacia el clúster) ──
+# OJO: anclados al raíz con `/` — sin la barra inicial, rsync excluiría
+# CUALQUIER dir con ese nombre (p.ej. src/side_project/.../data y /models).
+/data/
+/models/
+/models_weights/
+/src/models/
+
+# ── Artefactos M3A generados en el clúster (no sobreescribir en push) ──
+/experiments/M3A/m3a_index_full_ordered.json
+/experiments/M3A/m3a_index_*.json
+/experiments/M3A/m3a_probe_cache.json
+
+# ── Git ──
+.git/
+
+# ── Python artifacts ──
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ── Pesos de modelos ──
+*.pt
+*.pth
+*.pkl
+*.bin
+*.safetensors
+*.onnx
+*.h5
+
+# ── Media pesada ──
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# ── Archivos comprimidos ──
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# ── Caches ──
+.cache/
+.hf_cache/
+huggingface/
+.ipynb_checkpoints/
+
+# ── Secretos y entorno ──
+.env
+*.key
+*.pem
+env/
+venv/
+.conda/
+
+# ── Base de datos local (los .db del clúster se quedan allí) ──
+*.db
+*.sqlite
+
+# ── OS / IDE ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.code-workspace
